@@ -1,21 +1,10 @@
-let btn = document.querySelector('.btn');
-let ques = document.querySelector('.joke');
+let container = document.getElementsByClassName('container')[0]
 
-btn.addEventListener('click', generateJoke);
-
-generateJoke()
-
-// USING ASYNC/AWAIT
-async function generateJoke() {
-    const config = {
-        headers: {
-            Accept: 'application/json',
-        },
-    }
-
-    const res = await fetch('https://icanhazdadjoke.com', config)
-
-    const data = await res.json()
-
-    ques.innerHTML = data.joke
-}
+window.addEventListener('keyup', function(e) {
+    container.innerHTML = `<div class='keyCodes'>
+    <h2>${e.key}</h2><small>event.key</small></div>
+    <div class='keyCodes'>
+    <h2>${e.keyCode}</h2><small>event.keyCode</small></div>
+    <div class='keyCodes'>
+    <h2>${e.code}</h2><small>event.code</small></div>`;
+})
